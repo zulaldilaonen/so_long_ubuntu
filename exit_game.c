@@ -6,7 +6,7 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 21:20:30 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/11 17:54:20 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/12 11:36:00 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,13 @@ void	free_coins_data(t_game *game)
 
 	i = 0;
 	if (!game || !game->coins)
-		return;
-
+		return ;
 	if (game->coins->coin_img && game->mlx)
 	{
 		mlx_destroy_image(game->mlx, game->coins->coin_img);
 		game->coins->coin_img = NULL;
 	}
-	if (game->coins->coin_pos )
+	if (game->coins->coin_pos)
 	{
 		while (i < game->coin)
 		{

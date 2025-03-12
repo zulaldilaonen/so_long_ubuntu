@@ -6,7 +6,7 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 20:31:21 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/09 14:11:48 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/12 11:34:50 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void	display_exit(t_game *g, int i, int j)
 	}
 	if (*g->coins->coins_c != 0)
 	{
-		mlx_put_image_to_window(g->mlx, g->window, g->exit_imgs[1], j * RES,
-			i * RES);
+		mlx_put_image_to_window(g->mlx, g->window, g->exit_imgs[1], j * RES, i
+			* RES);
 	}
 	else
 	{
-		mlx_put_image_to_window(g->mlx, g->window, g->exit_imgs[0], j * RES,
-			i * RES);
+		mlx_put_image_to_window(g->mlx, g->window, g->exit_imgs[0], j * RES, i
+			* RES);
 	}
 }
 
@@ -55,8 +55,8 @@ void	display_coin(t_game *g, int i, int j)
 	{
 		error_code(-500, g);
 	}
-	mlx_put_image_to_window(g->mlx, g->window, g->coins->coin_img, j * RES,
-		i * RES);
+	mlx_put_image_to_window(g->mlx, g->window, g->coins->coin_img, j * RES, i
+		* RES);
 }
 
 void	display_player(t_game *g, int i, int j)
@@ -66,6 +66,6 @@ void	display_player(t_game *g, int i, int j)
 	{
 		error_code(-500, g);
 	}
-	mlx_put_image_to_window(g->mlx, g->window, g->player->player_img, j * RES,
-		i * RES);
+	mlx_put_image_to_window(g->mlx, g->window, g->player->player_img, j * RES, i
+		* RES);
 }

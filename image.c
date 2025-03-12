@@ -6,7 +6,7 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 20:35:01 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/11 17:41:48 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/12 11:34:56 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	initialize_images(t_game *game)
 	{
 		error_code(-500, game);
 	}
-	game->window = mlx_new_window(game->mlx, (RES * game->map->row_len),
-			(RES * game->map->row_num), "So_long");
+	game->window = mlx_new_window(game->mlx, (RES * game->map->row_len), (RES
+				* game->map->row_num), "So_long");
 	if (!game->window)
 	{
 		error_code(-500, game);

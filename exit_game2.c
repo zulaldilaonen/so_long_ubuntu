@@ -6,7 +6,7 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 21:22:09 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/11 17:41:21 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/12 11:34:36 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	exit_game(t_game *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!game)
 		return ;
-	if(game->m)
+	if (game->m)
 	{
-		while(game->m[i])
+		while (game->m[i])
 		{
 			free(game->m[i]);
 			i++;

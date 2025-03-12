@@ -6,7 +6,7 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 20:31:57 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/09 14:38:55 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/12 11:35:14 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,9 @@ void	count_map(t_map *map, t_game *game)
 		j = -1;
 		while (map->map[i][++j])
 		{
-			if (!(map->map[i][j] == '1' || map->map[i][j] == '0' ||
-				map->map[i][j] == 'P' ||
-				map->map[i][j] == 'E' ||
-				map->map[i][j] == 'C'))
+			if (!(map->map[i][j] == '1' || map->map[i][j] == '0'
+					|| map->map[i][j] == 'P' || map->map[i][j] == 'E'
+					|| map->map[i][j] == 'C'))
 				error_code(-3, game);
 		}
 	}
