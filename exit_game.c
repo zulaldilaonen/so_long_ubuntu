@@ -6,7 +6,7 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 21:20:30 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/13 15:33:32 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/13 23:50:30 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	free_player_data(t_game *game)
 			mlx_destroy_image(game->mlx, game->player->player_img);
 		free(game->player);
 	}
-
 }
 
 void	free_coins_data(t_game *game)
@@ -69,7 +68,6 @@ void	free_exit_imgs_data(t_game *game)
 		free(game->exit_imgs);
 	}
 }
-
 void	free_mlx_data(t_game *game)
 {
 	if (game->wall_img && game->mlx)

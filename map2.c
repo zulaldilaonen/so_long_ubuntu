@@ -6,7 +6,7 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 20:37:26 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/13 18:24:32 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/13 23:36:07 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	read_map(t_map *rt_map, char *src, int flag, t_game *game)
 		free(rt_map);
 		error_code(-404, game);
 	}
-	rd = ft_read(fd);
+	rd = ft_read(fd,game);
 	close(fd);
 	if (flag == 1)
 	{
@@ -135,7 +135,8 @@ void	validate_mapsize(t_map *rt_map, t_game *game)
 	if (i > 128 || rt_map->row_len > 128)
 	{
 		write(2, "Error map size is bigger than 128\n", 34);
-		free_map(rt_map);
+		free_argv(rt_map->map);
+		free(rt_map);
 		exit_game(game);
 	}
 }
@@ -147,11 +148,13 @@ t_map	*initialize_map(char *src, t_game *game)
 	rt_map = (t_map *)malloc(sizeof(t_map));
 	if (!rt_map)
 	{
+		free_argv(rt_map->map);
 		free(rt_map);
 		error_code(-500, game);
 	}
 	if (ft_strcmp(src + ft_strrchr(src, '.') + 1, "ber") == 0)
 	{
+		free_argv(rt_map->map);
 		free(rt_map);
 		error_code(-1, game);
 	}

@@ -6,7 +6,7 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 20:28:57 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/13 17:50:01 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/13 22:24:46 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void			to_right(t_game *game);
 void			to_up(t_game *game);
 char			*ft_itoa(int n);
 char			**ft_split(char const *s, char c);
-char			*ft_read(int fd);
+char	*ft_read(int fd, t_game *game);
 char			*ft_strdup(const char *s1);
 void			*ft_memcpy(void *dst, const void *src, size_t n);
 void			display_exit(t_game *g, int i, int j);
@@ -137,5 +137,6 @@ void			error_code(int code, t_game *game);
 int				key_hook(int keycode, t_game *game);
 int				close_hook(t_game *game);
 void	free_argv(char **argv);
+void	exit_game2(t_game *game);
 
 #endif

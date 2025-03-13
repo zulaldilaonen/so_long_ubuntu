@@ -6,7 +6,7 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 20:33:27 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/10 17:02:09 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/13 23:31:48 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	**ft_split(char const *s, char c)
 	return (rtn);
 }
 
-char	*ft_read(int fd)
+char	*ft_read(int fd, t_game *game)
 {
 	char	*rd;
 	int		count;
@@ -83,15 +83,19 @@ char	*ft_read(int fd)
 		if (count == -1)
 		{
 			write(2, "Error path is not a file\n", 25);
-			exit(1);
+			free(rd);
+			free(rt);
+			exit_game2(game);
 		}
 		rd[count] = 0;
 		rt = ft_strjoin(rt, rd);
 	}
 	if (ft_strlen(rt) == 0)
 	{
-		write(2, "Error empty file\n", 17);
-		exit(1);
+		close(fd);
+		free(rd);
+		free(rt);
+		error_code(-10,game);
 	}
 	free(rd);
 	return (rt);

@@ -6,7 +6,7 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 13:55:26 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/13 17:32:29 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/13 22:58:07 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	load_map_and_init_game(int ac, char **av, t_game *game)
 {
 	if (ac != 2)
 	{
-		free(game);
 		error_code(-42, game);
 		return (1);
 	}

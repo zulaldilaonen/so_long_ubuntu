@@ -6,7 +6,7 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 20:59:33 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/09 21:00:42 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/13 23:26:14 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	error_code(int code, t_game *game)
 		write(2, "Error invalid wall design\n", 27);
 	else if (code == -6)
 		write(2, "Error unreachable component exist\n", 35);
+	else if(code == -10)
+		write(2, "Error empty file\n", 17);
 	else if (code == -42)
 		write(2, "Error invalid argument count\n", 29);
 	else if (code == -404)
@@ -34,7 +36,7 @@ void	error_code(int code, t_game *game)
 		write(2, "Error Malloc\n", 14);
 	else
 		write(1, "Exit Game\n", 10);
-	exit_game(game);
+	exit_game2(game);
 }
 
 int	key_hook(int keycode, t_game *game)
