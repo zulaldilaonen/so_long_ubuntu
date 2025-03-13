@@ -6,7 +6,7 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 13:55:26 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/11 11:43:14 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/13 17:32:29 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,15 @@ int	load_map_and_init_game(int ac, char **av, t_game *game)
 {
 	if (ac != 2)
 	{
+		free(game);
 		error_code(-42, game);
 		return (1);
 	}
 	game->map = initialize_map(av[1], game);
 	if (!game->map)
 	{
+		free(game->map);
+		free(game);
 		error_code(-42, game);
 		return (1);
 	}
@@ -58,12 +61,14 @@ int	setup_game(int ac, char **av, t_game **game_ptr)
 	game = (t_game *)malloc(sizeof(t_game));
 	if (!game)
 	{
+		free(game);
 		error_code(-42, NULL);
 		return (1);
 	}
 	initialize_game_data(game);
 	if (load_map_and_init_game(ac, av, game) != 0)
 	{
+		free(game_ptr);
 		free(game);
 		return (1);
 	}
@@ -85,5 +90,6 @@ int	main(int ac, char **av)
 	if (setup_game(ac, av, &game) != 0)
 		return (1);
 	run_game_loop(game);
+	free(game);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 20:28:57 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/11 13:26:31 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/13 17:50:01 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,5 +136,6 @@ void			render_map(t_game *game);
 void			error_code(int code, t_game *game);
 int				key_hook(int keycode, t_game *game);
 int				close_hook(t_game *game);
+void	free_argv(char **argv);
 
 #endif

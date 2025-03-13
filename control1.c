@@ -6,7 +6,7 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 20:35:53 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/11 17:36:35 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/13 17:16:45 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,19 @@ int	**occurmatris(int i, int j, t_game *game)
 
 	rt = (int **)malloc(sizeof(int *) * i);
 	if (!rt)
+	{
+		free(rt);
 		error_code(-500, game);
+	}
 	a = 0;
 	while (a < i)
 	{
 		rt[a] = (int *)malloc(sizeof(int) * j);
 		if (!rt[a])
+		{
+			free(rt);
 			error_code(-500, game);
+		}
 		a++;
 	}
 	return (rt);
@@ -105,7 +111,11 @@ void	init_structures(t_game *game)
 	coins = (t_coins *)malloc(sizeof(t_coins));
 	player = (t_player *)malloc(sizeof(t_player));
 	if (!coins || !player)
+	{
+		free(coins);
+		free(player);
 		error_code(-500, game);
+	}
 	coins->coins_c = &game->map->coins;
 	coins->coin_pos = initalize_positions(game->map, 'C', game);
 	initalize_player_positions(game->map, player);

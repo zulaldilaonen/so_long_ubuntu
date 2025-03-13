@@ -6,7 +6,7 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 20:36:22 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/09 13:49:28 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/13 16:17:23 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	can_access_all(t_map *rt_map, t_game *game)
 		{
 			if (rt_map->map[i][j] == 'E' || rt_map->map[i][j] == 'C')
 			{
+				free_map(rt_map);
 				error_code(-6, game);
 			}
 			j++;
