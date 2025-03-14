@@ -6,7 +6,7 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 21:20:30 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/13 23:50:30 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/14 02:05:23 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	free_exit_imgs_data(t_game *game)
 		free(game->exit_imgs);
 	}
 }
+
 void	free_mlx_data(t_game *game)
 {
 	if (game->wall_img && game->mlx)

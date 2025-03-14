@@ -6,7 +6,7 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 20:31:57 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/13 22:14:11 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/14 02:59:16 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ int	count_character(t_map *map, char c)
 	return (count);
 }
 
+void	count_map_free(int err_code, t_map *map, t_game *game)
+{
+	free_map(map);
+	error_code(err_code, game);
+}
+
 void	count_map(t_map *map, t_game *game)
 {
 	int	i;
@@ -48,27 +54,17 @@ void	count_map(t_map *map, t_game *game)
 					|| map->map[i][j] == 'C'))
 			{
 				free_argv(map->map);
-				free(map);
-				error_code(-3, game);
+				count_map_free(-3, map, game);
 			}
 		}
 	}
 	if (count_character(map, 'P') != 1)
-	{
-		free_map(map);
-		error_code(-4, game);
-	}
+		count_map_free(-4, map, game);
 	if (count_character(map, 'E') != 1)
-	{
-		free_map(map);
-		error_code(-4, game);
-	}
+		count_map_free(-4, map, game);
 	map->coins = count_character(map, 'C');
 	if (map->coins == 0)
-	{
-		free_map(map);
-		error_code(-4, game);	
-	}
+		count_map_free(-4, map, game);
 }
 
 int	count_line(char *str)

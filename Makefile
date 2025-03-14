@@ -7,7 +7,7 @@ NAME = so_long
 SRC = ft_itoa.c control1.c control2.c directions.c  exit_game.c \
 	exit_game2.c ft_split.c game.c image.c main.c move.c\
     map.c map2.c others.c reading.c reading2.c render.c\
-    ft_memcpy.c main2.c
+    ft_memcpy.c main2.c initialize_read_map.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -24,7 +24,7 @@ $(MINILIB_LINUX):
 
 clean:
 	rm -f $(OBJ)
-#$(MAKE) -C minilibx-linux clean
+	$(MAKE) -C minilibx-linux clean
 
 fclean: clean
 	rm -f $(NAME)

@@ -6,11 +6,18 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 20:37:26 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/13 23:36:07 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/14 02:55:07 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	validate_walls_free(int err_code, t_map *rt_map, t_game *game)
+{
+	free_argv(rt_map->map);
+	free(rt_map);
+	error_code(err_code, game);
+}
 
 void	validate_walls(t_map *rt_map, t_game *game)
 {
@@ -20,99 +27,23 @@ void	validate_walls(t_map *rt_map, t_game *game)
 	while (rt_map->map[0][i])
 	{
 		if (rt_map->map[0][i++] != '1')
-		{
-			free_argv(rt_map->map);
-			free(rt_map);
-			error_code(-5, game);
-		}
+			validate_walls_free(-5, rt_map, game);
 	}
 	i = 0;
 	while (rt_map->map[rt_map->row_num - 1][i])
 	{
 		if (rt_map->map[rt_map->row_num - 1][i++] != '1')
-		{
-			free_argv(rt_map->map);
-			free(rt_map);
-			error_code(-5, game);
-		}
+			validate_walls_free(-5, rt_map, game);
 	}
 	i = rt_map->row_num - 2;
 	while (i > 0)
 	{
 		if (rt_map->map[i][0] != '1')
-		{
-			free_argv(rt_map->map);
-			free(rt_map);
-			error_code(-5, game);
-		}
+			validate_walls_free(-5, rt_map, game);
 		if (rt_map->map[i][rt_map->row_len - 1] != '1')
-		{
-			free_argv(rt_map->map);
-			free(rt_map);
-			error_code(-5, game);
-		}
+			validate_walls_free(-5, rt_map, game);
 		i--;
 	}
-}
-
-void	free_argv(char **argv)
-{
-	int	i;
-
-	i = 0;
-	while (argv[i])
-	{
-		free(argv[i]);
-		i++;
-	}
-	free(argv);
-}
-
-void	read_map_helper(t_map *rt_map, char *rd, t_game *game)
-{
-	int	i;
-
-	rt_map->map = ft_split(rd, '\n');
-	if (!rt_map->map)
-	{
-		write(1, "Error: ft_split failed!\n", 25);
-		free_argv(rt_map->map);
-	}
-	i = 0;
-	while (rt_map->map[i])
-		i++;
-	if (i != count_line(rd))
-	{
-		free_argv(rt_map->map);
-		free(rt_map);
-		free(rd);
-		error_code(-2, game);
-	}
-	free(rd);
-}
-
-void	read_map(t_map *rt_map, char *src, int flag, t_game *game)
-{
-	char	*rd;
-	int		i;
-	int		fd;
-
-	fd = open(src, O_RDONLY);
-	if (fd < 0)
-	{
-		free(rt_map);
-		error_code(-404, game);
-	}
-	rd = ft_read(fd,game);
-	close(fd);
-	if (flag == 1)
-	{
-		i = 0;
-		while (rt_map->map[i])
-			free(rt_map->map[i++]);
-		free(rt_map->map);
-	}
-	read_map_helper(rt_map, rd, game);
 }
 
 void	validate_mapsize(t_map *rt_map, t_game *game)
@@ -137,7 +68,7 @@ void	validate_mapsize(t_map *rt_map, t_game *game)
 		write(2, "Error map size is bigger than 128\n", 34);
 		free_argv(rt_map->map);
 		free(rt_map);
-		exit_game(game);
+		exit_game_error(game);
 	}
 }
 
@@ -148,13 +79,11 @@ t_map	*initialize_map(char *src, t_game *game)
 	rt_map = (t_map *)malloc(sizeof(t_map));
 	if (!rt_map)
 	{
-		free_argv(rt_map->map);
 		free(rt_map);
 		error_code(-500, game);
 	}
 	if (ft_strcmp(src + ft_strrchr(src, '.') + 1, "ber") == 0)
 	{
-		free_argv(rt_map->map);
 		free(rt_map);
 		error_code(-1, game);
 	}
