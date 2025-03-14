@@ -6,7 +6,7 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 20:28:57 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/14 02:39:08 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/14 08:43:56 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-enum			e_events
-{
-	ON_KEYDOWN = 2,
-	ON_DESTROY = 17
-};
-
 # define WALL_SRC "img/wall.xpm"
 # define FLOOR_SRC "img/floor.xpm"
 # define EXITA_SRC "img/exit.xpm"
@@ -38,7 +32,6 @@ typedef struct s_coins
 {
 	int			*coins_c;
 	int			**coin_pos;
-	int			frame;
 	void		*coin_img;
 }				t_coins;
 
@@ -46,7 +39,6 @@ typedef struct s_player
 {
 	int			player_i;
 	int			player_j;
-	int			frame;
 	void		*player_img;
 }				t_player;
 
@@ -79,9 +71,9 @@ typedef struct s_game
 }				t_game;
 
 int				**occurmatris(int i, int j, t_game *game);
-int				**initalize_positions(t_map *map, char c, t_game *game);
-void			initalize_player_positions(t_map *map, t_player *player);
-void			initalize_exit_positions(t_map *map, t_game *game);
+int				**initialize_coin_positions(t_map *map, char c, t_game *game);
+void			initialize_player_positions(t_map *map, t_player *player);
+void			initialize_exit_positions(t_map *map, t_game *game);
 void			init_structures(t_game *game);
 int				can_move(t_map *map, int i, int j);
 void			mark_to_reach(t_map *map, int i, int j);

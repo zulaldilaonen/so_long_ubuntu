@@ -6,7 +6,7 @@
 /*   By: zuonen <zuonen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 20:35:53 by zuonen            #+#    #+#             */
-/*   Updated: 2025/03/13 17:16:45 by zuonen           ###   ########.fr       */
+/*   Updated: 2025/03/14 07:54:10 by zuonen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	**occurmatris(int i, int j, t_game *game)
 	return (rt);
 }
 
-int	**initalize_positions(t_map *map, char c, t_game *game)
+int	**initialize_coin_positions(t_map *map, char c, t_game *game)
 {
 	int	i;
 	int	j;
@@ -63,7 +63,7 @@ int	**initalize_positions(t_map *map, char c, t_game *game)
 	return (rt);
 }
 
-void	initalize_player_positions(t_map *map, t_player *player)
+void	initialize_player_positions(t_map *map, t_player *player)
 {
 	int	i;
 	int	j;
@@ -83,7 +83,7 @@ void	initalize_player_positions(t_map *map, t_player *player)
 	}
 }
 
-void	initalize_exit_positions(t_map *map, t_game *game)
+void	initialize_exit_positions(t_map *map, t_game *game)
 {
 	int	i;
 	int	j;
@@ -117,8 +117,8 @@ void	init_structures(t_game *game)
 		error_code(-500, game);
 	}
 	coins->coins_c = &game->map->coins;
-	coins->coin_pos = initalize_positions(game->map, 'C', game);
-	initalize_player_positions(game->map, player);
+	coins->coin_pos = initialize_coin_positions(game->map, 'C', game);
+	initialize_player_positions(game->map, player);
 	game->m = game->map->map;
 	game->coins = coins;
 	game->player = player;
@@ -126,5 +126,5 @@ void	init_structures(t_game *game)
 	game->coin = game->map->coins;
 	game->player_i = &game->player->player_i;
 	game->player_j = &game->player->player_j;
-	initalize_exit_positions(game->map, game);
+	initialize_exit_positions(game->map, game);
 }
